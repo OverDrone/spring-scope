@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+group projectGroup
+version projectVersion
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
+
+ext {
+    springVersion = '4.3.4.RELEASE'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    providedCompile "javax.servlet:javax.servlet-api:3.0.1"
+
+    compile "org.springframework:spring-web:${springVersion}"
+    compile 'com.google.guava:guava:20.0'
+}
+
+
+war {
+    manifest {
+        attributes('Implementation-Version': version)
+    }
+}
